@@ -17,13 +17,15 @@ function sum2(args: number[]): number {
   }
   return total
 }
-
 console.log(sum2([2, 5, 7, 8]))
 
-function fn(a: number, b: number): void {
-  console.log(a + b)
+/**
+ * 回调函数参数注解
+ * 函数返回值为任意类型any
+ * 回调函数省略注解时会进行类型推论
+ */
+function fn(callback: (a: number, b: number) => number): any {
+  console.log(callback(100, 100))
 }
-
-let v: void = fn(3, 5)
-console.log(v)
+console.log(fn((a, b) => a + b))
 // > undefined
