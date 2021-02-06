@@ -7,7 +7,6 @@ let person: {
   sayHi: () => void
   sum: (a: number, b: number) => number
 }
-
 person = {
   username: 'miss',
   age: 18,
@@ -22,19 +21,36 @@ person.sayHi()
 console.log(person.sum(4, 5))
 
 /**
- * 接口
+ * class/interface/abstract
+ * public/protected/private
+ * extends/implements
  */
-interface User {
-  username: string,
-  age: number,
-  sayHi: () => void
+abstract class Father {
+  protected name: string
+  constructor(name: string) {
+    this.name = name
+  }
+  public abstract run(): void
+  public static main(): void {
+    console.log('main.')
+  }
 }
-
-let user: User = {
-  username: 'miss',
-  age: 18,
-  sayHi() {
+class Son extends Father {
+  private age: number
+  constructor(name: string, age: number) {
+    super(name)
+    this.age = age
+  }
+  public run(): void {
+    console.log('running...')
+  }
+}
+interface Person {
+  sayHi(): void
+}
+class User implements Person {
+  sayHi(): void {
     console.log('hello')
   }
 }
-console.log(user)
+
